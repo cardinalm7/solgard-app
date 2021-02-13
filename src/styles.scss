@@ -42,6 +42,45 @@ body {
 
 .level-title {
   text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .button {
+    ion-icon {
+      margin-left: 10px;
+    }
+  }
+}
+
+.menu {
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  top: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: all 0.2s;
+  height: 0px;
+  width: 100%;
+  button {
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: thin solid #dcdcdc;
+    &:active, &:focus {
+      outline: none;
+    }
+    &:focus {
+      font-size: 1.01em;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  &.open {
+    height: 250px;
+  }
 }
 
 .matrix-con {
@@ -80,6 +119,7 @@ body {
         justify-content: center;
         align-items: center;
         text-align: center;
+        transition: all 0.2s;
 
         &.empty {
           background-color: #eee;

@@ -8,6 +8,7 @@ import levels from './levels';
 const App = () => {
   const [level, setLevel] = useState(() => levels.Logar);
   const [round, setRound] = useState(() => 0);
+  const [menuOpen, setMenuOpen] = useState(() => false);
 
   const increment = (e) => {
     setRound(() => {
@@ -25,7 +26,19 @@ const App = () => {
 
   return (
     <div className="App">
-      <h2 className='level-title'>{`${level.title}`}</h2>
+      <div className={`menu ${menuOpen ? 'open' : ''}`}>
+        {Object.values(levels).map(l => <button onClick={() => {
+          setLevel(levels[l.title])
+          setMenuOpen(false);
+          setRound(0);
+        }}><h2>{l.title}</h2></button>)}
+      </div>
+      <h2 className='level-title'>
+        {`${level.title}`}
+        <div className='button' onClick={() => setMenuOpen((prev) => !prev)}>
+          <ion-icon name="menu-outline"></ion-icon>
+        </div>
+      </h2>
       <div className='level-pick'>
         <div className="button icon" onClick={increment}>
           <ion-icon name="chevron-back-circle-outline" />
